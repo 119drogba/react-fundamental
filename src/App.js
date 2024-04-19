@@ -8,14 +8,21 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(()=>{
-    console.log('hello useEffect')
-  });
+    //만약 로그인이 되어 있다면 isLoggedIn = true
+    const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn")
+    console.log(storedUserLoggedInInfo);
+    
+    //만약 로그인이 되어 있지 않다면 isLoggedIn = false
+
+  },[]);
 
   const loginHandler = (email, password) => {
+    localStorage.setItem('isLoggedIn','1')
     setIsLoggedIn(true);
   };
 
   const logoutHandler = () => {
+    localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
   };
 
